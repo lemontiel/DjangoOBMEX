@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from aplicacionobmex.views import base
+from aplicacionobmex import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^base/', base)
+    url(r'^$', views.base),
+    url(r'^institucionform/$', views.institucionForm)
 ]
