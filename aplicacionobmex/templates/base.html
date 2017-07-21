@@ -35,11 +35,19 @@
     </header>
 
     <!-- main -->
-    <main id="site-main">
-      <div class="container">
-
-      </div>
-    </main>
+  <body>
+        <div class="page-header">
+            <h1 align="center"><a href="/">Operaci&oacute;n Bendici&oacute;n</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
 
     <!-- footer -->
     <footer id="site-footer">
