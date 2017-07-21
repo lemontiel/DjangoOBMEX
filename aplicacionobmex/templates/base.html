@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>OBMEX</title>
+  <title>{%block title%}OBMEX{%endblock%}</title>
 
   <!-- required for angular routing -->
   <base href="/">
@@ -37,7 +37,9 @@
     <!-- main -->
     <main id="site-main">
       <div class="container">
+        {%block content%}
 
+        {%endblock%}
       </div>
     </main>
 
