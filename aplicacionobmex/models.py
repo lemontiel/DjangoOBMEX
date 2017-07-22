@@ -25,7 +25,7 @@ class Pedido(models.Model):
     id_Pedido = models.AutoField(primary_key=True)
     fecha = models.DateTimeField(auto_now=True, blank = False)
     hora = models.TimeField(auto_now=True, blank = False)
-    cantidad = models.IntegerField(blank = False, null = False)
+    cantidad = models.IntegerField(blank = False, null = False, default=0)
     tipoSilla = models.ForeignKey('Inventario', on_delete=models.CASCADE, blank = False)
     monto = models.FloatField(blank = False)
     def __str__(self):
