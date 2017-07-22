@@ -24,6 +24,7 @@ class Telefono(models.Model):
 class Pedido(models.Model):
     id_Pedido = models.IntegerField(primary_key=True)
     fecha = models.DateTimeField(auto_now=True, blank = False)
+    hora = models.TimeField(auto_now=True, blank = False)
     tipoSilla = models.ForeignKey('Inventario', on_delete=models.CASCADE, blank = False)
     monto = models.FloatField(blank = False)
     def __str__(self):
@@ -32,9 +33,11 @@ class Pedido(models.Model):
 class Contacto(models.Model):
     id_Contacto = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=90, blank=False)
-    apellidoM = models.CharField(max_length=45, blank = True)
     apellidoP = models.CharField(max_length=45, blank = True)
+    apellidoM = models.CharField(max_length=45, blank = True)
     cargo = models.CharField(max_length=30, null=True, blank = True)
+    telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = True)
+    email = models.EmailField(blank = True)
     pedido = models.ManyToManyField('Pedido', blank = True)
     cursos = models.ManyToManyField('Curso', blank = True)
     comentarios = models.ManyToManyField('Comentario', blank = True)
@@ -43,10 +46,10 @@ class Contacto(models.Model):
 
 class Curso(models.Model):
     id_Curso = models.IntegerField(primary_key=True)
-    fecha = models.DateTimeField(auto_now=True, auto_now_add=False, blank=False)
+    fecha = models.DateTimeField(auto_now=False, auto_now_add=False, blank=False)
     direccion = models.ForeignKey('Direccion', on_delete=models.CASCADE, blank = True)
-    hora = models.TimeField(auto_now=True, blank = True)
-    costo = models.FloatField(blank = True)
+    hora = models.TimeField(auto_now=False, blank = False)
+    costo = models.FloatField(blank = False)
     instructor= models.CharField(max_length=130, blank=False)
     participantes = models.ManyToManyField('Contacto', blank = True)
     def __str__(self):

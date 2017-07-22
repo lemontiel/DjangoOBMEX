@@ -1,12 +1,12 @@
 {%extends 'base.html'%}
-{%block title%}Agrega una Institucion{%endblock%}
+{%block title%}Registra un Pedido{%endblock%}
 {%block content%}
 
   <form action="#" method="post">
     <table class="table">
     {{form.as_table}}
     </table>
-    <input type="submit" value="institucion">
+    <input type="submit" value="Pedido">
     {% csrf_token %}
   </form>
 
