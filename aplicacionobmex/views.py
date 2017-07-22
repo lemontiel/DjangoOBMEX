@@ -7,10 +7,18 @@ def base(request):
 	return render(request, 'base.html')
 
 def institucionForm(request):
-	form = InstitucionForm
 	formdire = DireccionForm
-	telefono = Telefono.objects.all()
-	return render(request,'institucionform.html',{'form':form, 'telefono':telefono})
+	forminst = InstitucionForm(request.POST or None)
+	if forminst.is_valid():
+		data = {
+			'nombre' : forminst.cleaned_data['nombre'],
+			'email' : forminst.cleaned_data['email'],
+			'rfc' : forminst.cleaned_data['rfc'],
+		}
+		forminst.save()
+		return render(request, 'institucionform.html', {'forminst': forminst, 'data':data})
+
+	return render(request,'institucionform.html',{'forminst':forminst, 'formdire':formdire})
 
 def contactForm(request):
   form = ContactForm

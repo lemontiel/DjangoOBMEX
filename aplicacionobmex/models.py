@@ -2,19 +2,19 @@ from django.db import models
 from .extras.estados import EstadosCLV
 
 class Institucion(models.Model):
-    id_Institucion = models.IntegerField(primary_key=True,)
+    id_Institucion = models.AutoField(primary_key=True,)
     nombre = models.CharField(max_length=30, blank=False,)
     email = models.EmailField(blank = True)
     rfc = models.CharField(max_length=16, null=True, blank = True,)
     telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = True)
     direccion = models.ForeignKey('Direccion', on_delete=models.CASCADE, null=True, blank = True)
-    pedido = models.ManyToManyField('Pedido', null=True,blank = True)
-    contacto = models.ManyToManyField('Contacto', null=True,blank = True)
+    pedido = models.ManyToManyField('Pedido', blank = True)
+    contacto = models.ManyToManyField('Contacto',blank = True)
     def __str__(self):
         return str(self.nombre)
 
 class Telefono(models.Model):
-    id_Telefono = models.IntegerField(primary_key=True)
+    id_Telefono = models.AutoField(primary_key=True)
     lada = models.IntegerField(null = True, blank = True)
     numero = models.IntegerField(blank=False)
     extencion = models.IntegerField(null=True, blank=True)
@@ -22,7 +22,7 @@ class Telefono(models.Model):
         return str(self.numero)
 
 class Pedido(models.Model):
-    id_Pedido = models.IntegerField(primary_key=True)
+    id_Pedido = models.AutoField(primary_key=True)
     fecha = models.DateTimeField(auto_now=True, blank = False)
     hora = models.TimeField(auto_now=True, blank = False)
     tipoSilla = models.ForeignKey('Inventario', on_delete=models.CASCADE, blank = False)
@@ -31,7 +31,7 @@ class Pedido(models.Model):
         return str(self.id_Pedido)
 
 class Contacto(models.Model):
-    id_Contacto = models.IntegerField(primary_key=True)
+    id_Contacto = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=90, blank=False)
     apellidoP = models.CharField(max_length=45, blank = True)
     apellidoM = models.CharField(max_length=45, blank = True)
@@ -45,9 +45,9 @@ class Contacto(models.Model):
         return str(self.nombre + ' ' + self.apellidoP+' '+ self.apellidoM)
 
 class Curso(models.Model):
-    id_Curso = models.IntegerField(primary_key=True)
+    id_Curso = models.AutoField(primary_key=True)
     fecha = models.DateTimeField(auto_now=False, auto_now_add=False, blank=False)
-    direccion = models.ForeignKey('Direccion', on_delete=models.CASCADE, blank = True)
+    direccion = models.ForeignKey('Direccion', on_delete=models.CASCADE, blank = True, null=True)
     hora = models.TimeField(auto_now=False, blank = False)
     costo = models.FloatField(blank = False)
     instructor= models.CharField(max_length=130, blank=False)
@@ -56,7 +56,7 @@ class Curso(models.Model):
         return str(self.id_Curso)
 
 class Inventario(models.Model):
-    id_Producto = models.IntegerField(primary_key=True)
+    id_Producto = models.AutoField(primary_key=True)
     generacion = models.IntegerField(blank = False, choices = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5')), unique = True)
     existencias = models.IntegerField(blank = True)
     maxStock = models.IntegerField(blank = True)
@@ -64,7 +64,7 @@ class Inventario(models.Model):
         return str(self.id_Producto)
 
 class Direccion(models.Model):
-    id_Direccion= models.IntegerField(primary_key=True)
+    id_Direccion= models.AutoField(primary_key=True)
     calle = models.CharField(max_length=50, blank = True)
     numero = models.CharField(max_length=10, blank = True)
     entidad=models.CharField(max_length=30, blank = True)
@@ -79,7 +79,7 @@ class Direccion(models.Model):
         return(str(self.estado+' '+self.calle + ' ' + self.numero))
 
 class Comentario(models.Model):
-    id_Comentario=models.IntegerField(primary_key=True)
+    id_Comentario=models.AutoField(primary_key=True)
     fecha = models.DateTimeField(auto_now_add=True, blank = True)
     texto = models.TextField(blank=False)
     def __str__(self):
