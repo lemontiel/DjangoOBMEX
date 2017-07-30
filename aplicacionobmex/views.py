@@ -19,18 +19,35 @@ def institucionForm(request):
 		return render(request, 'institucionform.html', {'forminst': forminst, 'data':data})
 
 	return render(request,'institucionform.html',{'forminst':forminst, 'formdire':formdire})
-
+	
 def contactForm(request):
-  form = ContactForm
-  formdire = DireccionForm
-  telefono = Telefono.objects.all()
-  return render(request,'contactform.html',{'form':form, 'telefono':telefono})
+	formdire = DireccionForm
+	formcontact = ContactForm(request.POST or None)
+	if formcontact.is_valid():
+  		data = {
+  		'nombre' : formcontact.cleaned_data['nombre'],
+  		'apellidoP':formcontact.cleaned_data['apellidoP'],
+  		'apellidoM':formcontact.cleaned_data['apellidoM'],
+  		'email' : formcontact.cleaned_data['email'],
+  		}
+  		formcontact.save()
+  		return render(request,'contactform.html',{'formcontact':formcontact, 'data':data})
+  		return render(request,'contactform.html',{'formcontact':formcontact, 'formcontact':formcontact})
+
 
 def courseForm(request):
-  form = CourseForm
-  formdire = DireccionForm
-  return render(request,'courseform.html',{'form':form})
+	formdire = DireccionForm
+	formcourse = CourseForm(request.POST or None)
+	if formcourse.is_valid():
+  		data = {
+  		'fecha' : formcourse.cleaned_data['fecha'],
+  		'hora':formcourse.cleaned_data['hora'],
+  		'costo':formcourse.cleaned_data['costo'],
+  		}
+  		formcourse.save()
+  		return render(request,'contactform.html',{'formcourse':formcourse, 'data':data})
+	return render(request,'courseform.html',{'formcourse':formcourse})
 
 def orderForm(request):
-  form = OrderForm
-  return render(request,'orderform.html',{'form':form})
+	formorder = OrderForm
+	return render(request,'orderform.html',{'formorder':formorder})

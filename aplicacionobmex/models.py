@@ -8,15 +8,16 @@ class Institucion(models.Model):
     rfc = models.CharField(max_length=16, null=True, blank = True,)
     telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = True)
     direccion = models.ForeignKey('Direccion', on_delete=models.CASCADE, null=True, blank = True)
-    pedido = models.ManyToManyField('Pedido', blank = True)
-    contacto = models.ManyToManyField('Contacto',blank = True)
+    # pedido = models.OneToOneField('Pedido',on_delete=models.CASCADE, blank = True)
+    # contacto = models.ForeignKey('Contacto',blank = True)
     def __str__(self):
         return str(self.nombre)
 
 class Telefono(models.Model):
     id_Telefono = models.AutoField(primary_key=True)
     lada = models.IntegerField(null = True, blank = True)
-    numero = models.IntegerField(blank=False)
+    tipo = models.CharField(blank=False, max_length=7)
+    numero = models.CharField(blank=False, max_length=13)
     extencion = models.IntegerField(null=True, blank=True)
     def __str__(self):
         return str(self.numero)
@@ -28,18 +29,21 @@ class Pedido(models.Model):
     cantidad = models.IntegerField(blank = False, null = False, default=0)
     tipoSilla = models.ForeignKey('Inventario', on_delete=models.CASCADE, blank = False)
     monto = models.FloatField(blank = False)
+    contacto = models.ForeignKey("Contacto", on_delete=models.CASCADE,default=0)
+    institucion= models.ForeignKey("Institucion", on_delete=models.CASCADE,default=0)
     def __str__(self):
         return str(self.id_Pedido)
 
 class Contacto(models.Model):
     id_Contacto = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=90, blank=False)
-    apellidoP = models.CharField(max_length=45, blank = True)
-    apellidoM = models.CharField(max_length=45, blank = True)
+    apellidoP = models.CharField(max_length=45, blank = False)
+    apellidoM = models.CharField(max_length=45, blank = False)
     cargo = models.CharField(max_length=30, null=True, blank = True)
-    telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = True)
-    email = models.EmailField(blank = True)
-    pedido = models.ManyToManyField('Pedido', blank = True)
+    telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = False)
+    email = models.EmailField(blank = False)
+    institucion = models.ForeignKey("Institucion", on_delete=models.CASCADE, default=0)
+    # pedido = models.OneToOneField('Pedido', on_delete=models.CASCADE, blank = True)
     cursos = models.ManyToManyField('Curso', blank = True)
     comentarios = models.ManyToManyField('Comentario', blank = True)
     def __str__(self):

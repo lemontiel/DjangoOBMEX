@@ -29,4 +29,4 @@ class CourseForm(ModelForm):
 class OrderForm(ModelForm):
   class Meta:
     model=Pedido
-    fields=[ 'tipoSilla', 'monto']
+    fields=[ 'tipoSilla', 'cantidad', 'monto']
