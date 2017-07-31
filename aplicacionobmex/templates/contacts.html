@@ -1,0 +1,40 @@
+{%extends 'body.html'%}
+{%block title%}Contactos{%endblock%}
+{%block left_panel%}
+<table class="table table-striped">
+	<tr>
+		<th>Label</th>
+		<th>informaci&oacute;n</th>
+	</tr>
+	{% for contacto in contactos %}
+		<tr>
+			<td>Nombre:</td>
+			<td>{{ contacto.nombre }} {{ contacto.apellidoP }} {{ contacto.apellidoM }}</td>
+		</tr>
+		<tr>
+			<td>Cargo:</td>
+			<td>{{ contacto.cargo }}</td>
+		</tr>
+		<tr>
+			<td>Telefono:</td>
+			<td>{{ contacto.telefono }}</td>
+		</tr>
+		<tr>
+			<td>e-mail:</td>
+			<td>{{ contacto.email }}</td>
+		</tr>
+		<tr>
+			<td>Instituci&oacute;n:</td>
+			<td>{{ contacto.institucion }}</td>
+		</tr>
+	{% endfor %}
+</table>
+{%endblock%}
+
+{%block right_panel%}
+<span class="glyphicon glyphicon-user" style="padding-left:42%; font-size: 5em;"></span>
+
+{# comentarios #}
+
+
+{%endblock%}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,12 +21,14 @@
       <div class="navbar navbar-inverse">
         <div class="container">
           <div class="navbar-header">
-            <a href="/" class="navbar-brand">Data Base</a>
+            <a href="/" class="navbar-brand">Inicio</a>
           </div>
 
           <ul class="nav navbar-nav">
-            <li><a href="/events">Clients</a></li>
-            <li><a href="/events/create">Institutions</a></li>
+            <li><a href="{% url 'institucion' %}">Instituciones</a></li>
+            <li><a href="{% url 'contact' %}">Clientes</a></li>
+            <li><a href="{% url 'course' %}">Cursos</a></li>
+            {# <li><a href="{% url 'institucion' %}">Inventario</a></li> #}
           </ul>
         </div>
       </div>
@@ -42,7 +44,7 @@
     </main>
 
     <!-- footer -->
-    <footer id="site-footer">
+    <footer class="footer" id="site-footer">
       Copyright &copy; 2017 OBMEX
     </footer>
   </body>

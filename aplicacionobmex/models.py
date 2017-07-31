@@ -29,8 +29,8 @@ class Pedido(models.Model):
     cantidad = models.IntegerField(blank = False, null = False, default=0)
     tipoSilla = models.ForeignKey('Inventario', on_delete=models.CASCADE, blank = False)
     monto = models.FloatField(blank = False)
-    contacto = models.ForeignKey("Contacto", on_delete=models.CASCADE,default=0)
-    institucion= models.ForeignKey("Institucion", on_delete=models.CASCADE,default=0)
+    contacto = models.ForeignKey("Contacto", on_delete=models.CASCADE)
+    institucion= models.ForeignKey("Institucion", on_delete=models.CASCADE)
     def __str__(self):
         return str(self.id_Pedido)
 
@@ -42,7 +42,7 @@ class Contacto(models.Model):
     cargo = models.CharField(max_length=30, null=True, blank = True)
     telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = False)
     email = models.EmailField(blank = False)
-    institucion = models.ForeignKey("Institucion", on_delete=models.CASCADE, default=0)
+    institucion = models.ForeignKey("Institucion", on_delete=models.CASCADE)
     # pedido = models.OneToOneField('Pedido', on_delete=models.CASCADE, blank = True)
     cursos = models.ManyToManyField('Curso', blank = True)
     comentarios = models.ManyToManyField('Comentario', blank = True)

@@ -19,7 +19,7 @@ class DireccionForm(ModelForm):
 class ContactForm(ModelForm):
   class Meta:
     model=Contacto
-    fields=[ 'nombre', 'apellidoP', 'apellidoM', 'cargo', 'telefono', 'email']
+    fields=[ 'nombre', 'apellidoP', 'apellidoM', 'cargo', 'telefono', 'email','institucion']
 
 class CourseForm(ModelForm):
   class Meta:
@@ -29,4 +29,4 @@ class CourseForm(ModelForm):
 class OrderForm(ModelForm):
   class Meta:
     model=Pedido
-    fields=[ 'tipoSilla', 'cantidad', 'monto']
+    fields=[ 'tipoSilla', 'cantidad', 'monto', 'institucion', 'contacto']

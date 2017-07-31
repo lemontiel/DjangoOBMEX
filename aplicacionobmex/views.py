@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from aplicacionobmex.forms import InstitucionForm, DireccionForm, ContactForm, CourseForm, OrderForm
-from aplicacionobmex.models import Telefono
+from aplicacionobmex.models import Institucion, Telefono,Pedido, Contacto, Curso, Inventario, Direccion, Comentario
 # Create your views here.
 
 def base(request):
@@ -32,7 +32,7 @@ def contactForm(request):
   		}
   		formcontact.save()
   		return render(request,'contactform.html',{'formcontact':formcontact, 'data':data})
-  		return render(request,'contactform.html',{'formcontact':formcontact, 'formcontact':formcontact})
+	return render(request,'contactform.html',{'formcontact':formcontact, 'formcontact':formcontact})
 
 
 def courseForm(request):
@@ -51,3 +51,10 @@ def courseForm(request):
 def orderForm(request):
 	formorder = OrderForm
 	return render(request,'orderform.html',{'formorder':formorder})
+
+def contactsPage(request):
+	contactos = Contacto.objects.all().order_by("nombre")
+	return render(request,'contacts.html',{'contactos':contactos})
+
+def institutionsPage(request):
+	return render(request,'institutions.html')

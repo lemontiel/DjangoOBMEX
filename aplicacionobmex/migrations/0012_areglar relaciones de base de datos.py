@@ -28,16 +28,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='contacto',
             name='institucion',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='aplicacionobmex.Institucion'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='aplicacionobmex.Institucion'),
         ),
         migrations.AddField(
             model_name='pedido',
             name='contacto',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='aplicacionobmex.Contacto'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='aplicacionobmex.Contacto'),
         ),
         migrations.AddField(
             model_name='pedido',
             name='institucion',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='aplicacionobmex.Institucion'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='aplicacionobmex.Institucion'),
         ),
     ]
