@@ -3,8 +3,8 @@ from aplicacionobmex.forms import InstitucionForm, DireccionForm, ContactForm, C
 from aplicacionobmex.models import Institucion, Telefono,Pedido, Contacto, Curso, Inventario, Direccion, Comentario
 # Create your views here.
 
-def base(request):
-	return render(request, 'base.html')
+def index(request):
+	return render(request, 'index.html')
 
 def institucionForm(request):
 	formdire = DireccionForm

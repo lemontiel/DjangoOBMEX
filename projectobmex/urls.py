@@ -19,7 +19,7 @@ from aplicacionobmex import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.base),
+    url(r'^$', views.index, name='index'),
     url(r'^institucionform/$', views.institucionForm, name= 'institucionform'),
     url(r'^contactform/$', views.contactForm, name= 'contactform'),
     url(r'^courseform/$', views.courseForm, name= 'courseform'),
