@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from aplicacionobmex.forms import InstitucionForm, DireccionForm, ContactForm, CourseForm, OrderForm
+from aplicacionobmex.forms import InstitucionForm, DireccionForm, ContactForm, CourseForm, OrderForm, TelefonoForm
 from aplicacionobmex.models import Institucion, Telefono,Pedido, Contacto, Curso, Inventario, Direccion, Comentario
 # Create your views here.
 
@@ -8,6 +8,7 @@ def base(request):
 
 def institucionForm(request):
 	formdire = DireccionForm
+	formtel = TelefonoForm
 	forminst = InstitucionForm(request.POST or None)
 	if forminst.is_valid():
 		data = {
@@ -18,8 +19,8 @@ def institucionForm(request):
 		forminst.save()
 		return render(request, 'institucionform.html', {'forminst': forminst, 'data':data})
 
-	return render(request,'institucionform.html',{'forminst':forminst, 'formdire':formdire})
-	
+	return render(request,'institucionform.html',{'forminst':forminst, 'formdire':formdire, 'formtel':formtel})
+
 def contactForm(request):
 	formdire = DireccionForm
 	formcontact = ContactForm(request.POST or None)
@@ -52,9 +53,15 @@ def orderForm(request):
 	formorder = OrderForm
 	return render(request,'orderform.html',{'formorder':formorder})
 
-def contactsPage(request):
+def contactPage(request):
 	contactos = Contacto.objects.all().order_by("nombre")
-	return render(request,'contacts.html',{'contactos':contactos})
+	return render(request,'contact.html',{'contactos':contactos})
 
-def institutionsPage(request):
-	return render(request,'institutions.html')
+def institutionPage(request):
+	return render(request,'institution.html')
+
+def orderPage(request):
+	return render(request,'order.html')
+
+def coursePage(request):
+	return render(request, 'course.html')

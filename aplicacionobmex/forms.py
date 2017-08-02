@@ -30,3 +30,8 @@ class OrderForm(ModelForm):
   class Meta:
     model=Pedido
     fields=[ 'tipoSilla', 'cantidad', 'monto', 'institucion', 'contacto']
+
+class TelefonoForm(ModelForm):
+    class Meta:
+        model=Telefono
+        fields=['lada', 'tipo', 'numero', 'extencion']

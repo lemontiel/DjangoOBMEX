@@ -20,10 +20,12 @@ from aplicacionobmex import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.base),
-    url(r'^institucionform/$', views.institucionForm, name= 'institucion'),
-    url(r'^contactform/$', views.contactForm, name= 'contact'),
-    url(r'^courseform/$', views.courseForm, name= 'course'),
-    url(r'^orderform/$', views.orderForm, name= 'order'),
-    url(r'^contacts/$', views.contactsPage, name= 'contacts'),
-    url(r'^institutions/$', views.institutionsPage, name= 'institutions')
+    url(r'^institucionform/$', views.institucionForm, name= 'institucionform'),
+    url(r'^contactform/$', views.contactForm, name= 'contactform'),
+    url(r'^courseform/$', views.courseForm, name= 'courseform'),
+    url(r'^orderform/$', views.orderForm, name= 'orderform'),
+    url(r'^contact/(?P<contactID>[0,9]{7})/$', views.contactPage, name= 'contactpage'),
+    url(r'^institution/(?P<institutionID>[0,9]{7})/$', views.institutionPage, name= 'institutionpage'),
+    url(r'^order/(?P<orderID>[0,9]{7})/$',views.orderPage, name = 'orderpage'),
+    url(r'^course/(?P<courseID>[0,9]{7})/$',views.coursePage, name = 'coursepage'),
 ]
