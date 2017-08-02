@@ -1,9 +1,36 @@
 {%extends 'body.html'%}
 {%block title%}Instituciones{%endblock%}
 {%block left_panel%}
-
+<table class="table table-striped">
+	<tr>
+		<th>Label</th>
+		<th>informaci&oacute;n</th>
+	</tr>
+	{% for institucion in instituciones %}
+		<tr>
+			<td>Nombre:</td>
+			<td>{{ institucion.nombre }}</td>
+		</tr>
+		<tr>
+			<td>e-mail:</td>
+			<td>{{ institucion.email }}</td>
+		</tr>
+		<tr>
+			<td>Telefono:</td>
+			<td>{{ institucion.telefono }}</td>
+		</tr>
+		<tr>
+			<td>Direcci&oacute;n:</td>
+			<td>{{ institucion.direccion }}</td>
+		</tr>
+	{% endfor %}
+</table>
 {%endblock%}
 
 {%block right_panel%}
+<span class="glyphicon glyphicon-tower" style="padding-left:42%; font-size: 5em;"></span>
+
+{# comentarios #}
+
 
 {%endblock%}

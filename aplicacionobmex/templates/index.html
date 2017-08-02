@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block title%}Inicio{%endblock%}
+{%block content%}
+
+<div class="jumbotron text-center">
+	<h1>Inicio</h1>
+</div>
+<div class="user-list row">
+	<div class="col-sm-6">
+		<div class="well"> 
+			<div class="user-card text-center" href="{% url 'institucion' %}">
+				<img src="{% static "images/Institucion.png" %}" alt="Users"/ style="width:128px;height:128px;">
+				<h2>Instituciones</h2>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="well"> 
+			<div class="user-card text-center" href="{% url 'institucion' %}">
+				<img src="{% static "images/Users.png" %}" alt="Users"/ style="width:128px;height:128px;">
+				<h2>Contactos</h2>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="well"> 
+			<div class="user-card text-center" href="{% url 'institucion' %}">
+				<img src="{% static "images/Users.png" %}" alt="Users"/ style="width:128px;height:128px;">
+				<h2>Cursos</h2>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="well"> 
+			<div class="user-card text-center" href="{% url 'institucion' %}">
+				<img src="{% static "images/Users.png" %}" alt="Users"/ style="width:128px;height:128px;">
+				<h2>Inventario</h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+{%endblock%}

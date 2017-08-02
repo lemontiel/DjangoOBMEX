@@ -18,8 +18,8 @@ from django.contrib import admin
 from aplicacionobmex import views
 
 urlpatterns = [
+    url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.base),
     url(r'^institucionform/$', views.institucionForm, name= 'institucion'),
     url(r'^contactform/$', views.contactForm, name= 'contact'),
     url(r'^courseform/$', views.courseForm, name= 'course'),

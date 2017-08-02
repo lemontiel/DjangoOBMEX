@@ -6,6 +6,9 @@ from aplicacionobmex.models import Institucion, Telefono,Pedido, Contacto, Curso
 def base(request):
 	return render(request, 'base.html')
 
+def index(request):
+    return render(request, 'index.html')
+
 def institucionForm(request):
 	formdire = DireccionForm
 	forminst = InstitucionForm(request.POST or None)
@@ -57,4 +60,5 @@ def contactsPage(request):
 	return render(request,'contacts.html',{'contactos':contactos})
 
 def institutionsPage(request):
-	return render(request,'institutions.html')
+	instituciones = Institucion.objects.all().order_by("nombre")
+	return render(request,'institutions.html',{'instituciones':instituciones})
