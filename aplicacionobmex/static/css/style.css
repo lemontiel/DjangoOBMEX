@@ -29,7 +29,7 @@ body {
 }
 
 /* header2 */
-#site-h2 {
+.site-h2 {
   color: blue; 
   text-shadow: 0 0 5px blue, 0 0 5px black;
 }
