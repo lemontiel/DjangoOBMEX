@@ -52,8 +52,28 @@
       <label for="{{forminst.direccion.id_for_label}}">Direccion:</label>
     </div>
     <div class="col-xs-2">
-      <button type="button" name="boton direccion" data-toggle="modal" data-target=".bd-example-modal-sm"><span class="glyphicon glyphicon-plus-sign"></span></button>
-      
+      <button type="button" name="boton direccion" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus-sign"></span></button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>      
 
     </div>
   </div>
