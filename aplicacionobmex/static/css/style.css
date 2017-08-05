@@ -36,34 +36,40 @@ body {
 }
 
 #myNavbar .active {
-    color:           white;
-    background-color: rgba(27, 79, 114, 0.15);
+	color:           white;
+	background-color: rgba(27, 79, 114, 0.15);
 }
 
 /* Moves navbar within scroll */
 .affix {
-      top: 0;
-      width: 100%;
-  }
+	top: 0;
+	width: 100%;
+}
 
 #f-Index { 
-  background: url("../images/index.jpg") no-repeat center center fixed;
-  background-size: cover;
+	background: url("../images/index.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+.jumbotron {
+	height:150px;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 /* img */
 .img-card{
-  width:90px;
-  height:90px;
+	width:90px;
+	height:90px;
 }
 
 /* width column Index */
 .I-witdth{
-  width:300px;
+	width:300px;
 }
 
 /* header2 */
 .site-h2 {
-  color: cyan; 
-  text-shadow: 0 0 5px purple, 0 0 5px blue, 0 0 5px black;
+	color: cyan; 
+	text-shadow: 0 0 5px purple, 0 0 5px blue, 0 0 5px black;
 }
