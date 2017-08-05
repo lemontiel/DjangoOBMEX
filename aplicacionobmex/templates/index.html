@@ -3,45 +3,45 @@
 {%block title%}Inicio{%endblock%}
 {%block content%}
 
-<div class="jumbotron text-center">
-	<h1 style="font-family: 'Pacifico', cursive;">Inicio</h1>
+<div class="jumbotron text-center" style="background: rgba(151, 154, 154, 0.6)">
+	<h1 style="font-family: 'Pacifico', cursive;">OBMEX</h1>
 </div>
 <div class="user-list row">
 	<div class="col-sm-6">
-		<div class="well" style="background-color:red;opacity:0.6"> 
+		<div class="well" style="background-color:rgba(255,0,0,0.6)"> 
 			<a href="{% url 'institucionform' %}">
 				<div class="user-card text-center">
-					<img src="{% static "images/Institucion.png" %}" alt="Users"/ style="width:128px;height:128px;">
+					<img src="{% static "images/Institucion.png" %}" alt="Users" class=" img-card ">
 					<h2 class="site-h2">Instituciones</h2>
 				</div>
 			</a>
 		</div>
 	</div>
 	<div class="col-sm-6">
-		<div class="well" style="background-color: cyan;opacity:0.6">
+		<div class="well" style="background-color:rgba(0,0,255,0.6)">
 			<a href="{% url 'institucionform' %}">
 				<div class="user-card text-center">
-					<img src="{% static "images/Users.png" %}" alt="Users"/ style="width:128px;height:128px;">
+					<img src="{% static "images/Users.png" %}" alt="Users" class=" img-card ">
 					<h2 class="site-h2">Contactos</h2>
 				</div>
 			</a>
 		</div>
 	</div>
 	<div class="col-sm-6">
-		<div class="well" style="background-color: yellow;opacity:0.6">
+		<div class="well" style="background-color:rgba(241,196,15,0.6)">
 			<a href="{% url 'institucionform' %}">
 				<div class="user-card text-center">
-					<img src="{% static "images/Courses.png" %}" alt="Users"/ style="width:128px;height:128px;">
+					<img src="{% static "images/Courses.png" %}" alt="Users" class=" img-card ">
 					<h2 class="site-h2">Cursos</h2>
 				</div>
 			</a>
 		</div>
 	</div>
 	<div class="col-sm-6">
-		<div class="well" style="background-color: rgb(0,255,0);opacity:0.6"> 
+		<div class="well" style="background-color: rgba(0,255,0,0.6)"> 
 			<a href="{% url 'institucionform' %}">
 				<div class="user-card text-center">
-					<img src="{% static "images/Inventory2.png" %}" alt="Users"/ style="width:128px;height:128px;">
+					<img src="{% static "images/Inventory2.png" %}" alt="Users" class=" img-card ">
 					<h2 class="site-h2">Inventario</h2>
 				</div>
 				</a

@@ -17,6 +17,7 @@ def institucionForm(request):
 			'rfc' : forminst.cleaned_data['rfc'],
 		}
 		forminst.save()
+		forminst=InstitucionForm()
 		return render(request, 'institucionform.html', {'forminst': forminst, 'data':data})
 
 	return render(request,'institucionform.html',{'forminst':forminst, 'formdire':formdire, 'formtel':formtel})
@@ -32,6 +33,7 @@ def contactForm(request):
   		'email' : formcontact.cleaned_data['email'],
   		}
   		formcontact.save()
+  		formcontact=ContactForm()
   		return render(request,'contactform.html',{'formcontact':formcontact, 'data':data})
 	return render(request,'contactform.html',{'formcontact':formcontact, 'formcontact':formcontact})
 
@@ -46,6 +48,7 @@ def courseForm(request):
   		'costo':formcourse.cleaned_data['costo'],
   		}
   		formcourse.save()
+  		formcourse=CourseForm()
   		return render(request,'contactform.html',{'formcourse':formcourse, 'data':data})
 	return render(request,'courseform.html',{'formcourse':formcourse})
 
