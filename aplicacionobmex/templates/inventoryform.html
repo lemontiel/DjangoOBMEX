@@ -12,14 +12,10 @@
 
 <a href="#Foo" class="btn btn-default" data-toggle="collapse">Toggle Foo</a> <button href="#Bar" class="btn btn-default" data-toggle="collapse">Toggle Bar</button> <div id="Foo" class="collapse"> This div (Foo) is hidden by default </div> <div id="Bar" class="collapse in"> This div (Bar) is shown by default and can toggle </div>
 
-    <table class="table">
+    <table class="table table-bordered">
     <thead>
-    	<th>
-    		Generaci&oacute;n
-    	</th>
-    	<th>
-    		Existencias
-    	</th>
+    	<th>Generaci&oacute;n</th>
+    	<th>Existencias</th>
     </thead>
     <tbody>
     	{% for silla in inventory %}
