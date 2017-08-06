@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 from aplicacionobmex.forms import InstitucionForm, DireccionForm, ContactForm, CourseForm, OrderForm, TelefonoForm
 from aplicacionobmex.models import Institucion, Telefono,Pedido, Contacto, Curso, Inventario, Direccion, Comentario
 # Create your views here.
 
-def index(request):
-	return render(request, 'index.html')
+class index(TemplateView):
+	template_name = "index.html"
 
 def institucionForm(request):
 	formdire = DireccionForm

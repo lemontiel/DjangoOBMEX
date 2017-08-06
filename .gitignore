@@ -1,8 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.py[co]
+
 *.egg-info
 *.pot
-*.py[co]
 .tox/
-__pycache__
 MANIFEST
 dist/
 docs/_build/
