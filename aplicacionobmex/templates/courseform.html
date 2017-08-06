@@ -1,7 +1,10 @@
 {%extends 'base.html'%}
 {%block title%}Agrega un Curso{%endblock%}
 {%block content%}
-
+<button href="#form" class="btn btn-default" data-toggle="collapse">
+    Agregar
+</button>
+<div id="form" class="collapse">
   <form action="#" method="post">
     <table class="table">
     {{formcourse.as_table}}
@@ -9,6 +12,7 @@
     <input type="submit" value="Curso">
     {% csrf_token %}
   </form>
+</div>
 
     <table class="table table-bordered">
     <thead>

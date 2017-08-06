@@ -2,6 +2,10 @@
 {%block title%}Registra un Pedido{%endblock%}
 {%block content%}
 
+<button href="#form" class="btn btn-default" data-toggle="collapse">
+    Agregar
+</button>
+<div id="form" class="collapse">
   <form action="#" method="post">
     <table class="table">
     {{formorder.as_table}}
@@ -9,5 +13,6 @@
     <input type="submit" value="Pedido">
     {% csrf_token %}
   </form>
+</div>
 
 {%endblock%}

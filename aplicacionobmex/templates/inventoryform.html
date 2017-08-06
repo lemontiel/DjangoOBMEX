@@ -2,15 +2,20 @@
 {%block title%}Registra un Pedido{%endblock%}
 {%block content%}
 
+
+<button href="#form" class="btn btn-default" data-toggle="collapse">
+    Agregar
+</button>
+<div id="form" class="collapse">
   <form action="#" method="post">
     <table class="table">
-    {{forminventory.as_table}}
+      {{forminventory.as_table}}
     </table>
     <input type="submit" value="Inventario">
     {% csrf_token %}
   </form>
 
-<a href="#Foo" class="btn btn-default" data-toggle="collapse">Toggle Foo</a> <button href="#Bar" class="btn btn-default" data-toggle="collapse">Toggle Bar</button> <div id="Foo" class="collapse"> This div (Foo) is hidden by default </div> <div id="Bar" class="collapse in"> This div (Bar) is shown by default and can toggle </div>
+</div>
 
     <table class="table table-bordered">
     <thead>
