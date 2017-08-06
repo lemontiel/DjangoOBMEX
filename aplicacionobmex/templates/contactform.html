@@ -10,4 +10,24 @@
     {% csrf_token %}
   </form>
 
+  <table class="table">
+    <thead>
+    	<th>Nombre</th>
+    	<th>Cargo</th>
+    	<th>Tel&eacute;fono</th>
+    	<th>e-mail</th>
+    	<th>Instituci&oacute;n</th>
+    </thead>
+    <tbody>
+    	{% for contacto in contact %}
+    	<tr>
+    		<td>{{ contacto.nombre }} {{ contacto.apellidoP }} {{ contacto.apellidoM }}</td>
+    		<td>{{ contacto.cargo }}</td>
+    		<td>{{ contacto.telefono }}</td>
+    		<td>{{ contacto.email }}</td>
+    		<td>{{ contacto.institucion }}</td>
+    	</tr>
+    	{% endfor %}
+    </tbody>
+
 {%endblock%}

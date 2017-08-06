@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block title%}Registra un Pedido{%endblock%}
+{%block content%}
+
+  <form action="#" method="post">
+    <table class="table">
+    {{forminventory.as_table}}
+    </table>
+    <input type="submit" value="Inventario">
+    {% csrf_token %}
+  </form>
+
+<a href="#Foo" class="btn btn-default" data-toggle="collapse">Toggle Foo</a> <button href="#Bar" class="btn btn-default" data-toggle="collapse">Toggle Bar</button> <div id="Foo" class="collapse"> This div (Foo) is hidden by default </div> <div id="Bar" class="collapse in"> This div (Bar) is shown by default and can toggle </div>
+
+    <table class="table">
+    <thead>
+    	<th>
+    		Generaci&oacute;n
+    	</th>
+    	<th>
+    		Existencias
+    	</th>
+    </thead>
+    <tbody>
+    	{% for silla in inventory %}
+    	<tr>
+    		<td>{{ silla.generacion }}</td>
+    		<td>{{ silla.existencias }}</td>
+    	</tr>
+    	{% endfor %}
+    </tbody>
+    </table>
+
+{%endblock%}

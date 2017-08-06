@@ -9,4 +9,23 @@
     <input type="submit" value="Curso">
     {% csrf_token %}
   </form>
+
+    <table class="table">
+    <thead>
+    	<th>Fecha</th>
+    	<th>Hora</th>
+    	<th>Costo</th>
+    	<th>Direcci&oacute;n</th>
+    </thead>
+    <tbody>
+    	{% for curso in course %}
+    	<tr>
+    		<td>{{ curso.fecha }}</td>
+    		<td>{{ curso.hora }}</td>
+    		<td>{{ curso.costo }}</td>
+    		<td>{{ curso.direccion }}</td>
+    	</tr>
+    	{% endfor %}
+    </tbody>
+
 {%endblock%}

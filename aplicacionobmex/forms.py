@@ -21,6 +21,11 @@ class ContactForm(ModelForm):
     model=Contacto
     fields=[ 'nombre', 'apellidoP', 'apellidoM', 'cargo', 'telefono', 'email','institucion']
 
+class InventoryForm(ModelForm):
+  class Meta:
+    model=Inventario
+    fields=['generacion', 'existencias']
+
 class CourseForm(ModelForm):
   class Meta:
     model=Curso

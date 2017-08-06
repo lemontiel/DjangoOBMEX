@@ -61,12 +61,10 @@ class Curso(models.Model):
         return str(self.id_Curso)
 
 class Inventario(models.Model):
-    id_Producto = models.AutoField(primary_key=True)
-    generacion = models.IntegerField(blank = False, choices = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5')), unique = True)
+    generacion = models.IntegerField(blank = False, choices = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5')), primary_key = True)
     existencias = models.IntegerField(blank = True)
-    maxStock = models.IntegerField(blank = True)
     def __str__(self):
-        return str(self.id_Producto)
+        return str(self.generacion)+" " +str(existencias)
 
 class Direccion(models.Model):
     id_Direccion= models.AutoField(primary_key=True)

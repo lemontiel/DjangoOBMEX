@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from aplicacionobmex.forms import InstitucionForm, DireccionForm, ContactForm, CourseForm, OrderForm, TelefonoForm
+from aplicacionobmex.forms import InstitucionForm, DireccionForm, InventoryForm, ContactForm, CourseForm, OrderForm, TelefonoForm
 from aplicacionobmex.models import Institucion, Telefono,Pedido, Contacto, Curso, Inventario, Direccion, Comentario
 # Create your views here.
 
@@ -12,46 +12,36 @@ def institucionForm(request):
 	formtel = TelefonoForm
 	forminst = InstitucionForm(request.POST or None)
 	if forminst.is_valid():
-		data = {
-			'nombre' : forminst.cleaned_data['nombre'],
-			'email' : forminst.cleaned_data['email'],
-			'rfc' : forminst.cleaned_data['rfc'],
-		}
 		forminst.save()
 		forminst=InstitucionForm()
-		return render(request, 'institucionform.html', {'forminst': forminst, 'data':data})
-
-	return render(request,'institucionform.html',{'forminst':forminst, 'formdire':formdire, 'formtel':formtel})
+	institution=Institucion.objects.all()
+	return render(request,'institucionform.html',{'forminst':forminst, 'formdire':formdire, 'institution':institution, 'formtel':formtel})
 
 def contactForm(request):
 	formdire = DireccionForm
 	formcontact = ContactForm(request.POST or None)
 	if formcontact.is_valid():
-  		data = {
-  		'nombre' : formcontact.cleaned_data['nombre'],
-  		'apellidoP':formcontact.cleaned_data['apellidoP'],
-  		'apellidoM':formcontact.cleaned_data['apellidoM'],
-  		'email' : formcontact.cleaned_data['email'],
-  		}
   		formcontact.save()
   		formcontact=ContactForm()
-  		return render(request,'contactform.html',{'formcontact':formcontact, 'data':data})
-	return render(request,'contactform.html',{'formcontact':formcontact, 'formcontact':formcontact})
+	contact=Contacto.objects.all()
+	return render(request,'contactform.html',{'formcontact':formcontact, 'contact':contact})
 
+def inventoryForm(request):
+	forminventory = InventoryForm(request.POST or None)
+	if forminventory.is_valid():
+		forminventory.save()
+		forminventory=InventoryForm()
+	inventory=Inventario.objects.all()
+	return render(request,'inventoryform.html',{'forminventory':forminventory, 'inventory':inventory})
 
 def courseForm(request):
 	formdire = DireccionForm
 	formcourse = CourseForm(request.POST or None)
 	if formcourse.is_valid():
-  		data = {
-  		'fecha' : formcourse.cleaned_data['fecha'],
-  		'hora':formcourse.cleaned_data['hora'],
-  		'costo':formcourse.cleaned_data['costo'],
-  		}
   		formcourse.save()
   		formcourse=CourseForm()
-  		return render(request,'contactform.html',{'formcourse':formcourse, 'data':data})
-	return render(request,'courseform.html',{'formcourse':formcourse})
+	course=Curso.objects.all()
+	return render(request,'courseform.html',{'formcourse':formcourse, 'course':course})
 
 def orderForm(request):
 	formorder = OrderForm
