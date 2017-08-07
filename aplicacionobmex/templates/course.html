@@ -42,8 +42,17 @@
 {%block right_panel%}
 <span class="glyphicon glyphicon-home" style="padding-left:42%; font-size: 5em;"></span>
 
-{% for r in course.participantes.all %}
-<h1>{{ r.id_Contacto }}</h1>
-{% endfor %}
+<table class="table table-bordered">
+	<thead>
+		<th>Nombre de los participantes</th>
+	</thead>
+	<tbody>
+		{% for participante in course.participantes.all %}
+		<tr>
+		<td><a href="{% url 'contactpage' contactID=participante.id_Contacto %}">{{ participante.nombre }} {{ participante.apellidoP }} {{ participante.apellidoM }}</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 
 {%endblock%}

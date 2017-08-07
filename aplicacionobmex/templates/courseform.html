@@ -20,7 +20,6 @@
     	<th>Hora</th>
     	<th>Costo</th>
     	<th>Direcci&oacute;n</th>
-        <th>Participantes</th>
     </thead>
     <tbody>
     	{% for curso in course %}
@@ -29,7 +28,6 @@
             <td>{{ curso.hora }}</td>
             <td>{{ curso.costo }}</td>
             <td>{{ curso.direccion }}</td>
-            <td>{{ curso.participantes }}</td>
             <td><button type="button" class="btn btn-danger">Eliminar</button></td>
         </tr>
         {% endfor %}
