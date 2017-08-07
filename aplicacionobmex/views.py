@@ -47,9 +47,9 @@ def orderForm(request):
 	formorder = OrderForm
 	return render(request,'orderform.html',{'formorder':formorder})
 
-def contactPage(request):
-	contactos = Contacto.objects.all().order_by("nombre")
-	return render(request,'contact.html',{'contactos':contactos})
+def contactPage(request, contactID):
+	contacto = Contacto.objects.get(id_Contacto = contactID)
+	return render(request,'contact.html',{'contacto' : contacto})
 
 def institutionPage(request):
 	return render(request,'institution.html')
