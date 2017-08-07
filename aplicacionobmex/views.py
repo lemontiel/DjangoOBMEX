@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from aplicacionobmex.forms import InstitucionForm, DireccionForm, InventoryForm, ContactForm, CourseForm, OrderForm, TelefonoForm
+from aplicacionobmex.forms import InstitucionForm, DireccionForm, InventoryForm, ContactForm, CourseForm, OrderForm, TelefonoForm, ComentarioForm
 from aplicacionobmex.models import Institucion, Telefono,Pedido, Contacto, Curso, Inventario, Direccion, Comentario
 # Create your views here.
 
@@ -48,12 +48,16 @@ def orderForm(request):
 	return render(request,'orderform.html',{'formorder':formorder})
 
 def contactPage(request, contactID):
+	formcomment = ComentarioForm
+	telefono = Telefono.objects.filter(contacto = contactID)
 	contacto = Contacto.objects.get(id_Contacto = contactID)
-	return render(request,'contact.html',{'contacto' : contacto})
+	return render(request,'contact.html',{'contacto' : contacto, 'formcomment':formcomment, 'telefono':telefono})
 
 def institutionPage(request,institutionID):
+	telefono = Telefono.objects.filter(institucion = institutionID)
 	institucion = Institucion.objects.get(id_Institucion = institutionID)
-	return render(request,'institution.html',{'institucion' : institucion})
+	contacto = Contacto.objects.filter(institucion = institutionID)
+	return render(request,'institution.html',{'institucion' : institucion,'telefono':telefono,'contacto' : contacto})
 
 def orderPage(request):
 	return render(request,'order.html')

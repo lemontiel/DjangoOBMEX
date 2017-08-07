@@ -2,8 +2,65 @@
 {%block title%}Instituciones{%endblock%}
 {%block left_panel%}
 
+<table class="table table-striped">
+	<tr>
+		<th>Label</th>
+		<th>informaci&oacute;n</th>
+	</tr>
+	<tr>
+		<td>Nombre:</td>
+		<td>{{ institucion.nombre }}</td>
+	</tr>
+	<tr>
+		<td>e-mail:</td>
+		<td>{{ institucion.email }}</td>
+	</tr>
+	{% for tel in telefono %}
+	<tr>
+		<td>Telefono {{forloop.counter}}:</td>
+		<td>
+			{%if tel.lada != None%}
+			({{tel.lada}})
+			{%endif%}
+			{{ tel.numero}}
+
+			{%if tel.extencion != None %}
+			ext:{{tel.extencion}}
+			{%endif%}
+			
+		</td>
+	</tr>
+	{% endfor %}
+	<tr><td>Direccion:</td><td>{{ institucion.direccion.estado}}</td></tr>
+	<tr><td>Calle</td><td>{{institucion.direccion.calle}}</td></tr>
+	<tr><td>N&uacute;mero</td><td>{{institucion.direccion.numero}}</td></tr>
+	<tr><td>Entidad</td><td>{{institucion.direccion.entidad}}</td></tr>
+	<tr><td>Colonia</td><td>{{institucion.direccion.colonia}}</td></tr>
+	<tr><td>Delegaci&oacute;n</td><td>{{institucion.direccion.delegacion}}</td></tr>
+	<tr><td>Pa&iacute;s</td><td>{{institucion.direccion.pais}}</td></tr>
+	<tr><td>N&uacute;mero_2</td><td>{{institucion.direccion.numero_2}}</td></tr>
+	<tr><td>Entre calle_1</td><td>{{institucion.direccion.entreCalle_1}}</td></tr>
+	<tr><td>Entre calle_2</td><td>{{institucion.direccion.entreCalle_2}}</td></tr>
+</table>
+
 {%endblock%}
 
 {%block right_panel%}
+<span class="glyphicon glyphicon-home" style="padding-left:42%; font-size: 5em;"></span>
+
+<table class="table table-bordered">
+	<thead>
+		<th>Nombre</th>
+		<th>Cargo</th>
+	</thead>
+	<tbody>
+		{% for contact in contacto %}
+		<tr>
+		<td><a href="{% url 'contactpage' contactID=contact.id_Contacto %}">{{ contact.nombre }} {{ contact.apellidoP }} {{ contact.apellidoM }}</a></td>
+			<td>{{ contact.cargo }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 
 {%endblock%}

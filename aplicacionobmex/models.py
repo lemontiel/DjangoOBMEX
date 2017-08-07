@@ -6,7 +6,7 @@ class Institucion(models.Model):
     nombre = models.CharField(max_length=30, blank=False,)
     email = models.EmailField(blank = True)
     rfc = models.CharField(max_length=16, null=True, blank = True,)
-    telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = True)
+    # telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = True)
     direccion = models.ForeignKey('Direccion', on_delete=models.CASCADE, null=True, blank = True)
     # pedido = models.OneToOneField('Pedido',on_delete=models.CASCADE, blank = True)
     # contacto = models.ForeignKey('Contacto',blank = True)
@@ -19,6 +19,8 @@ class Telefono(models.Model):
     tipo = models.CharField(blank=False, max_length=7)
     numero = models.CharField(blank=False, max_length=13)
     extencion = models.IntegerField(null=True, blank=True)
+    contacto = models.ForeignKey('Contacto', on_delete=models.CASCADE, null=True, blank = True)
+    institucion = models.ForeignKey('Institucion', on_delete=models.CASCADE, null=True, blank = True)
     def __str__(self):
         return str(self.numero)
 
@@ -40,12 +42,12 @@ class Contacto(models.Model):
     apellidoP = models.CharField(max_length=45, blank = False)
     apellidoM = models.CharField(max_length=45, blank = False)
     cargo = models.CharField(max_length=30, null=True, blank = True)
-    telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = False)
+    # telefono = models.ForeignKey('Telefono', on_delete=models.CASCADE, null=True, blank = False)
     email = models.EmailField(blank = False)
     institucion = models.ForeignKey("Institucion", on_delete=models.CASCADE)
     # pedido = models.OneToOneField('Pedido', on_delete=models.CASCADE, blank = True)
     cursos = models.ManyToManyField('Curso', blank = True)
-    comentarios = models.ManyToManyField('Comentario', blank = True)
+    # comentarios = models.ForeignKey('Comentario', blank = True)
     def __str__(self):
         return str(self.nombre + ' ' + self.apellidoP+' '+ self.apellidoM)
 
@@ -85,5 +87,6 @@ class Comentario(models.Model):
     id_Comentario=models.AutoField(primary_key=True)
     fecha = models.DateTimeField(auto_now_add=True, blank = True)
     texto = models.TextField(blank=False)
+    contacto = models.ForeignKey('Contacto', blank = True, null=True)
     def __str__(self):
         return(str(self.id_Comentario))

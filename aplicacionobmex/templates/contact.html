@@ -14,17 +14,29 @@
 			<td>Cargo:</td>
 			<td>{{ contacto.cargo }}</td>
 		</tr>
+			{% for tel in telefono %}
 		<tr>
-			<td>Telefono:</td>
-			<td>{{ contacto.telefono }}</td>
+			<td>Telefono {{forloop.counter}}:</td>
+			<td>
+			{%if tel.lada != None%}
+			({{tel.lada}})
+			{%endif%}
+			{{ tel.numero}}
+
+			{%if tel.extencion != None %}
+				ext:{{tel.extencion}}
+			{%endif%}
+			
+			</td>
 		</tr>
+		{% endfor %}
 		<tr>
 			<td>e-mail:</td>
 			<td>{{ contacto.email }}</td>
 		</tr>
 		<tr>
 			<td>Instituci&oacute;n:</td>
-			<td>{{ contacto.institucion }}</td>
+			<td><a href="{% url 'institutionpage' contacto.institucion.id_Institucion %}">{{ contacto.institucion }}</a></td>
 		</tr>
 </table>
 {%endblock%}
@@ -33,6 +45,6 @@
 <span class="glyphicon glyphicon-user" style="padding-left:42%; font-size: 5em;"></span>
 
 {# comentarios #}
-
+{{formcomment}}
 
 {%endblock%}
