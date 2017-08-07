@@ -1,0 +1,49 @@
+{%extends 'body.html'%}
+{%block title%}Curso{%endblock%}
+{%block left_panel%}
+
+{{course.1}}
+
+<table class="table table-striped">
+	<tr>
+		<th>Label</th>
+		<th>informaci&oacute;n</th>
+	</tr>
+	<tr>
+		<td>Fecha:</td>
+		<td>{{ course.fecha }}</td>
+	</tr>
+	<tr>
+		<td>Hora:</td>
+		<td>{{ course.hora }}</td>
+	</tr>
+	<tr>
+		<td>Costo:</td>
+		<td>{{ course.costo }}</td>
+	</tr>
+	<tr>
+		<td>Instructor:</td>
+		<td>{{ course.instructor }}</td>
+	</tr>
+	<tr><td>Direccion:</td><td>{{ course.direccion.estado}}</td></tr>
+	<tr><td>Calle</td><td>{{course.direccion.calle}}</td></tr>
+	<tr><td>N&uacute;mero</td><td>{{course.direccion.numero}}</td></tr>
+	<tr><td>Entidad</td><td>{{course.direccion.entidad}}</td></tr>
+	<tr><td>Colonia</td><td>{{course.direccion.colonia}}</td></tr>
+	<tr><td>Delegaci&oacute;n</td><td>{{course.direccion.delegacion}}</td></tr>
+	<tr><td>Pa&iacute;s</td><td>{{course.direccion.pais}}</td></tr>
+	<tr><td>N&uacute;mero_2</td><td>{{course.direccion.numero_2}}</td></tr>
+	<tr><td>Entre calle_1</td><td>{{course.direccion.entreCalle_1}}</td></tr>
+	<tr><td>Entre calle_2</td><td>{{course.direccion.entreCalle_2}}</td></tr>
+</table>
+
+{%endblock%}
+
+{%block right_panel%}
+<span class="glyphicon glyphicon-home" style="padding-left:42%; font-size: 5em;"></span>
+
+{% for r in course.participantes.all %}
+<h1>{{ r.id_Contacto }}</h1>
+{% endfor %}
+
+{%endblock%}

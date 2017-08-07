@@ -29,7 +29,7 @@ class InventoryForm(ModelForm):
 class CourseForm(ModelForm):
   class Meta:
     model=Curso
-    fields=[ 'fecha', 'hora', 'costo', 'direccion','instructor']
+    fields=[ 'fecha', 'hora', 'costo', 'direccion','instructor','participantes']
 
 class OrderForm(ModelForm):
   class Meta:

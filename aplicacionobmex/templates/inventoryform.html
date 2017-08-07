@@ -10,26 +10,27 @@
   <form action="#" method="post">
     <table class="table">
       {{forminventory.as_table}}
-    </table>
-    <input type="submit" value="Inventario">
-    {% csrf_token %}
-  </form>
+  </table>
+  <input type="submit" value="Inventario">
+  {% csrf_token %}
+</form>
 
 </div>
 
-    <table class="table table-bordered">
+<table class="table table-bordered">
     <thead>
     	<th>Generaci&oacute;n</th>
     	<th>Existencias</th>
     </thead>
     <tbody>
     	{% for silla in inventory %}
-    	<tr>
-    		<td>{{ silla.generacion }}</td>
-    		<td>{{ silla.existencias }}</td>
-    	</tr>
-    	{% endfor %}
+        <tr>
+            <td>{{ silla.generacion }}</td>
+            <td>{{ silla.existencias }}</td>
+            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        {% endfor %}
     </tbody>
-    </table>
+</table>
 
 {%endblock%}

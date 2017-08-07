@@ -7,29 +7,32 @@
 <div id="form" class="collapse">
   <form action="#" method="post">
     <table class="table">
-    {{formcourse.as_table}}
+        {{formcourse.as_table}}
     </table>
     <input type="submit" value="Curso">
     {% csrf_token %}
-  </form>
+</form>
 </div>
 
-    <table class="table table-bordered">
+<table class="table table-bordered">
     <thead>
     	<th>Fecha</th>
     	<th>Hora</th>
     	<th>Costo</th>
     	<th>Direcci&oacute;n</th>
+        <th>Participantes</th>
     </thead>
     <tbody>
     	{% for curso in course %}
-    	<tr>
-    		<td>{{ curso.fecha }}</td>
-    		<td>{{ curso.hora }}</td>
-    		<td>{{ curso.costo }}</td>
-    		<td>{{ curso.direccion }}</td>
-    	</tr>
-    	{% endfor %}
+        <tr>
+            <td><a href="{% url 'coursepage' courseID=curso.id_Curso %}">{{ curso.fecha }}</a></td>
+            <td>{{ curso.hora }}</td>
+            <td>{{ curso.costo }}</td>
+            <td>{{ curso.direccion }}</td>
+            <td>{{ curso.participantes }}</td>
+            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+        {% endfor %}
     </tbody>
 
-{%endblock%}
+    {%endblock%}
