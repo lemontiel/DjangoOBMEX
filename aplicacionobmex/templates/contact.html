@@ -6,7 +6,6 @@
 		<th>Label</th>
 		<th>informaci&oacute;n</th>
 	</tr>
-	{% for contacto in contactos %}
 		<tr>
 			<td>Nombre:</td>
 			<td>{{ contacto.nombre }} {{ contacto.apellidoP }} {{ contacto.apellidoM }}</td>
@@ -27,7 +26,6 @@
 			<td>Instituci&oacute;n:</td>
 			<td>{{ contacto.institucion }}</td>
 		</tr>
-	{% endfor %}
 </table>
 {%endblock%}
 

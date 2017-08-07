@@ -3,73 +3,94 @@
 {%block content%}
 
 <button href="#form" class="btn btn-default" data-toggle="collapse">
-    Agregar
+  Agregar
 </button>
 <div id="form" class="collapse">
-<div class="container">
-  <div class="row">
-    <form class="form"action="#" method="post">
-      {{ form.non_field_errors }}
-      <div class="form-group">
-        <div class="col-xs-2">
-          <label for="{{forminst.nombre.id_for_label}}">Nombre:</label>
+  <div class="container">
+    <div class="row">
+      <form class="form"action="#" method="post">
+        {{ form.non_field_errors }}
+        <div class="form-group">
+          <div class="col-xs-2">
+            <label for="{{forminst.nombre.id_for_label}}">Nombre:</label>
+          </div>
+          <div class="col-xs-2">
+            {{forminst.nombre}}
+          </div>
         </div>
-        <div class="col-xs-2">
-          {{forminst.nombre}}
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-xs-2">
+            <label for="{{forminst.email.id_for_label}}">Email:</label>
+          </div>
+          <div class="col-xs-2">
+            {{forminst.email}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-xs-2">
+            <label for="{{forminst.rfc.id_for_label}}">RFC:</label>
+          </div>
+          <div class="col-xs-2">
+            {{forminst.rfc}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-xs-2">
+            <label for="{{formins.telefono.id_for_label}}">Telefono:</label>
+          </div>
+          <div class="col-xs-2">
+
+            <button type="button" name="boton telefono"><span class="glyphicon glyphicon-plus-sign"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-xs-2">
+            <label for="{{forminst.direccion.id_for_label}}">Direccion:</label>
+          </div>
+          <div class="col-xs-2">
+            <button type="button" name="boton direccion" data-toggle="modal" data-target=".bd-example-modal-sm"><span class="glyphicon glyphicon-plus-sign"></span></button>
+
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="form-group">
-        <div class="col-xs-2">
-          <label for="{{forminst.email.id_for_label}}">Email:</label>
-        </div>
-        <div class="col-xs-2">
-          {{forminst.email}}
+      <div class="col-xs-2 col-xs-offset-2">
+        <div class="form-group">
+          <input type="submit" class="btn btn-default" value="institucion">
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="form-group">
-      <div class="col-xs-2">
-        <label for="{{forminst.rfc.id_for_label}}">RFC:</label>
-      </div>
-      <div class="col-xs-2">
-        {{forminst.rfc}}
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-    <div class="col-xs-2">
-      <label for="{{formins.telefono.id_for_label}}">Telefono:</label>
-    </div>
-    <div class="col-xs-2">
+    {% csrf_token %}
+  </form>
+</div>
 
-      <button type="button" name="boton telefono"><span class="glyphicon glyphicon-plus-sign"></span></button>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="form-group">
-    <div class="col-xs-2">
-      <label for="{{forminst.direccion.id_for_label}}">Direccion:</label>
-    </div>
-    <div class="col-xs-2">
-      <button type="button" name="boton direccion" data-toggle="modal" data-target=".bd-example-modal-sm"><span class="glyphicon glyphicon-plus-sign"></span></button>
+<table class="table table-bordered">
+  <thead>
+    <th>Nombre</th>
+    <th>Tel&eacute;fono</th>
+    <th>Direcci&oacute;n</th>
+    <th>RFC</th>
+  </thead>
+  <tbody>
+    {% for inst in institution %}
+    <tr>
+    <td><a href="{% url 'institutionpage' institutionID=inst.id_Institucion %}">
+    {{ inst.nombre }}</a></td>
+      <td>{{ inst.telefono }}</td>
+      <td>{{ inst.direccion.estado }}</td>
+      <td>{{ inst.rfc }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    </div>
-  </div>
-</div>
-</div>
-<div class="row">
-  <div class="col-xs-2 col-xs-offset-2">
-    <div class="form-group">
-      <input type="submit" class="btn btn-default" value="institucion">
-    </div>
-  </div>
-</div>
-{% csrf_token %}
-</form>
-</div>
 {%endblock%}

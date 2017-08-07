@@ -51,8 +51,9 @@ def contactPage(request, contactID):
 	contacto = Contacto.objects.get(id_Contacto = contactID)
 	return render(request,'contact.html',{'contacto' : contacto})
 
-def institutionPage(request):
-	return render(request,'institution.html')
+def institutionPage(request,institutionID):
+	institucion = Institucion.objects.get(id_Institucion = institutionID)
+	return render(request,'institution.html',{'institucion' : institucion})
 
 def orderPage(request):
 	return render(request,'order.html')

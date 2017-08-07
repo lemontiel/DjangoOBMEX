@@ -2,16 +2,37 @@
 {%block title%}Registra un Contacto{%endblock%}
 {%block content%}
 <button href="#form" class="btn btn-default" data-toggle="collapse">
-    Agregar
+	Agregar
 </button>
 <div id="form" class="collapse">
-  <form action="#" method="post">
-    <table class="table">
-    {{formcontact.as_table}}
-    </table>
-    <input type="submit" value="Contacto">
-    {% csrf_token %}
-  </form>
+	<form action="#" method="post">
+		<table class="table">
+			{{formcontact.as_table}}
+		</table>
+		<input type="submit" value="Contacto">
+		{% csrf_token %}
+	</form>
 </div>
+
+<table class="table table-bordered">
+	<thead>
+		<th>Nombre</th>
+		<th>Cargo</th>
+		<th>Tel&eacute;fono</th>
+		<th>e-mail</th>
+		<th>Instituci&oacute;n</th>
+	</thead>
+	<tbody>
+		{% for contacto in contact %}
+		<tr>
+		<td><a href="{% url 'contactpage' contactID=contacto.id_Contacto %}">{{ contacto.nombre }} {{ contacto.apellidoP }} {{ contacto.apellidoM }}</a></td>
+			<td>{{ contacto.cargo }}</td>
+			<td>{{ contacto.telefono }}</td>
+			<td>{{ contacto.email }}</td>
+			<td>{{ contacto.institucion }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 
 {%endblock%}
