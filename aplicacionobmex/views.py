@@ -28,9 +28,11 @@ def contactForm(request):
 
 def inventoryForm(request):
 	forminventory = InventoryForm(request.POST or None)
-	if forminventory.is_valid():
-		forminventory.save()
-		forminventory=InventoryForm()
+	if 'POST' in request.method:
+		inventario = Inventario.objects.get(request.POST['generacion'])
+		inventario.existencias += int(request.POST['existencias'])
+		inventario.save(['existencias'])
+		forminventory=InventoryForm(None)
 	inventory=Inventario.objects.all()
 	return render(request,'inventoryform.html',{'forminventory':forminventory, 'inventory':inventory})
 
