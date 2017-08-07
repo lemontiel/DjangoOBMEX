@@ -62,5 +62,6 @@ def institutionPage(request,institutionID):
 def orderPage(request):
 	return render(request,'order.html')
 
-def coursePage(request):
-	return render(request, 'course.html')
+def coursePage(request,courseID):
+	course = Curso.objects.get(id_Curso = courseID)
+	return render(request, 'course.html',{'course':course})
